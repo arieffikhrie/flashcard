@@ -1,0 +1,11 @@
+.topic-list-container {
+  display: flex;
+  flex-direction: column;
+  input[matInput], textarea[matInput] {
+    width: 100%;
+  }
+  textarea[matInput] {
+    resize: none;
+    height: 50px;
+  }
+}

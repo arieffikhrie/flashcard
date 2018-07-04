@@ -1,0 +1,67 @@
+.flash-card-container {
+  max-width: 480px;
+  margin: 0 auto;
+}
+.card-list-container {
+  display: flex;
+  flex-direction: column;
+  input[matInput] {
+    width: 100%;
+  }
+}
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+}
+
+.flip-container.hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  width: 100%;
+	height: 520px;
+}
+
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  border-radius: 30px;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
+	backface-visibility: hidden;
+	position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  font-size: 36px;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+  transform: rotateY(0deg);
+  background: #9EB9DF;
+}
+
+/* back, initially hidden pane */
+.back {
+  background: #5081C5;
+	transform: rotateY(180deg);
+}
+
+.cards-list-buttons {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
+  flex-wrap: wrap;
+}

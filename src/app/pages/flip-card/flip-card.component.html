@@ -1,0 +1,42 @@
+<div class="flash-card-container">
+  <mat-card *ngIf="cards && cards.length > 0" class="flash-card">
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+    <mat-card-content *ngIf="!isLoading">
+        <div class="flip-container" [class.hover]="isFlipped">
+          <div class="flipper">
+            <div class="front">
+              {{ currentCard.front }}
+            </div>
+            <div class="back">
+              {{ currentCard.back }}
+            </div>
+          </div>
+        </div>
+        <div class="cards-list-buttons">
+            <button mat-raised-button (click)="goNextHandler()">I know this</button>
+            <button mat-raised-button color="accent" (click)="flipCardHandler()">{{ !isFlipped ? "Show back": "Show front" }}</button>
+        </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Add new card
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <form class="card-list-container" [formGroup]="cardForm" (submit)="addCardSubmitHandler()">
+        <mat-form-field>
+          <input matInput placeholder="Question" formControlName="front" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Answer" formControlName="back" required>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" [disabled]="!cardForm.valid">Add card</button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
