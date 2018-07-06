@@ -5,6 +5,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
+<<<<<<< HEAD
             Personal data
           </mat-panel-title>
           <mat-panel-description>
@@ -34,6 +35,26 @@
     </mat-accordion>
     <mat-nav-list>
       <a mat-list-item href="topics/{{ topic.id }}" *ngFor="let topic of topics | async"> {{topic | json}} </a>
+=======
+            Add new topic
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form class="topic-list-container" [formGroup]="topicForm" (submit)="addTopicSubmitHandler()">
+          <mat-form-field>
+            <input matInput placeholder="Topic title" formControlName="name" required>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput placeholder="Description" formControlName="description" required></textarea>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="primary" [disabled]="!topicForm.valid">Add topic</button>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/topics', topic.id]" *ngFor="let topic of topics | async"> {{ topic.name }} </a>
+>>>>>>> 8584d179fd794f26b4d31f7ae5419cc05e0386f9
     </mat-nav-list>
   </mat-card-content>
 </mat-card>
